@@ -1,4 +1,5 @@
---drop table User;
+--drop table [User];
+--delete from [User];
 
 go
 create table [User] (

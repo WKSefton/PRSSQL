@@ -1,6 +1,6 @@
 use master;
 go
-drop database PRSSQL;
+--drop database PRSSQL;
 go
 create database PRSSQL;
 go
@@ -50,7 +50,7 @@ create table Products (
 go
 create unique index uix_partnumber on [Products](PartNumber);
 go
-create table PurchasRequest (
+create table PurchaseRequest (
 	Id int not null Identity(1,1) Primary Key,
 	UserId int not null Foreign Key references [User](Id),
 	Description nvarchar(100) not null,
@@ -62,9 +62,9 @@ create table PurchasRequest (
 	ReasonForRejection nvarchar(100)
 );
 go
-create table PurchasRequestLineItem (
+create table PurchaseRequestLineItem (
 	Id int not null Identity(1,1) Primary Key,
-	PurchasRequestId int not null Foreign Key references [PurchasRequest](Id),
+	PurchaseRequestId int not null Foreign Key references [PurchaseRequest](Id),
 	ProductsId int not null Foreign Key references [Products](Id),
 	Quantity int not null default 1,
 	Active bit not null default 1
